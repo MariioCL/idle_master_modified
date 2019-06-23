@@ -36,7 +36,6 @@ namespace IdleMaster
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.grpGeneral = new System.Windows.Forms.GroupBox();
             this.noSleepBox = new System.Windows.Forms.CheckBox();
-            this.whiteIconsCheckBox = new System.Windows.Forms.CheckBox();
             this.darkThemeCheckBox = new System.Windows.Forms.CheckBox();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
             this.lblLanguage = new System.Windows.Forms.Label();
@@ -44,19 +43,14 @@ namespace IdleMaster
             this.chkIgnoreClientStatus = new System.Windows.Forms.CheckBox();
             this.chkMinToTray = new System.Windows.Forms.CheckBox();
             this.grpPriority = new System.Windows.Forms.GroupBox();
-            this.radIdleMostValue = new System.Windows.Forms.RadioButton();
-            this.radIdleLeastDrops = new System.Windows.Forms.RadioButton();
-            this.radIdleMostDrops = new System.Windows.Forms.RadioButton();
             this.radIdleDefault = new System.Windows.Forms.RadioButton();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.ttHints = new System.Windows.Forms.ToolTip(this.components);
             this.btnAdvanced = new System.Windows.Forms.Button();
             this.grpIdlingQuantity = new System.Windows.Forms.GroupBox();
-            this.radFastMode = new System.Windows.Forms.RadioButton();
-            this.radOneThenMany = new System.Windows.Forms.RadioButton();
-            this.radManyThenOne = new System.Windows.Forms.RadioButton();
             this.radOneGameOnly = new System.Windows.Forms.RadioButton();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grpGeneral.SuspendLayout();
             this.grpPriority.SuspendLayout();
             this.grpIdlingQuantity.SuspendLayout();
@@ -67,7 +61,6 @@ namespace IdleMaster
             this.grpGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpGeneral.Controls.Add(this.noSleepBox);
-            this.grpGeneral.Controls.Add(this.whiteIconsCheckBox);
             this.grpGeneral.Controls.Add(this.darkThemeCheckBox);
             this.grpGeneral.Controls.Add(this.cboLanguage);
             this.grpGeneral.Controls.Add(this.lblLanguage);
@@ -76,7 +69,7 @@ namespace IdleMaster
             this.grpGeneral.Controls.Add(this.chkMinToTray);
             this.grpGeneral.Location = new System.Drawing.Point(13, 13);
             this.grpGeneral.Name = "grpGeneral";
-            this.grpGeneral.Size = new System.Drawing.Size(392, 124);
+            this.grpGeneral.Size = new System.Drawing.Size(392, 146);
             this.grpGeneral.TabIndex = 0;
             this.grpGeneral.TabStop = false;
             this.grpGeneral.Text = "General";
@@ -92,61 +85,25 @@ namespace IdleMaster
             this.noSleepBox.Text = "Prevent Windows from Sleep";
             this.noSleepBox.UseVisualStyleBackColor = true;
             // 
-            // whiteIconsCheckBox
-            // 
-            this.whiteIconsCheckBox.AutoSize = true;
-            this.whiteIconsCheckBox.Checked = global::IdleMaster.Properties.Settings.Default.whiteIcons;
-            this.whiteIconsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::IdleMaster.Properties.Settings.Default, "whiteIcons", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.whiteIconsCheckBox.Location = new System.Drawing.Point(305, 38);
-            this.whiteIconsCheckBox.Name = "whiteIconsCheckBox";
-            this.whiteIconsCheckBox.Size = new System.Drawing.Size(82, 17);
-            this.whiteIconsCheckBox.TabIndex = 7;
-            this.whiteIconsCheckBox.Text = "White icons";
-            this.whiteIconsCheckBox.UseVisualStyleBackColor = true;
-            this.whiteIconsCheckBox.CheckedChanged += new System.EventHandler(this.whiteIconsCheckBox_CheckedChanged);
-            // 
             // darkThemeCheckBox
             // 
             this.darkThemeCheckBox.AutoSize = true;
-            this.darkThemeCheckBox.Checked = global::IdleMaster.Properties.Settings.Default.customTheme;
-            this.darkThemeCheckBox.Location = new System.Drawing.Point(305, 19);
+            this.darkThemeCheckBox.Location = new System.Drawing.Point(8, 93);
             this.darkThemeCheckBox.Name = "darkThemeCheckBox";
             this.darkThemeCheckBox.Size = new System.Drawing.Size(81, 17);
             this.darkThemeCheckBox.TabIndex = 6;
             this.darkThemeCheckBox.Text = "Dark theme";
             this.darkThemeCheckBox.UseVisualStyleBackColor = true;
-            this.darkThemeCheckBox.CheckedChanged += new System.EventHandler(this.darkThemeCheckBox_CheckedChanged);
+            this.darkThemeCheckBox.CheckedChanged += new System.EventHandler(this.darkThemeBox_CheckedChanged);
             // 
             // cboLanguage
             // 
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
             this.cboLanguage.Items.AddRange(new object[] {
-            "English",
-            "Chinese (Simplified, China)",
-            "Chinese (Traditional, China)",
-            "Czech",
-            "Dutch",
-            "Finnish",
-            "French",
-            "German",
-            "Greek",
-            "Hungarian",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Norwegian",
-            "Polish",
-            "Portuguese",
-            "Portuguese (Brazil)",
-            "Romanian",
-            "Russian",
             "Spanish",
-            "Swedish",
-            "Thai",
-            "Turkish",
-            "Ukrainian"});
-            this.cboLanguage.Location = new System.Drawing.Point(135, 95);
+            "English"});
+            this.cboLanguage.Location = new System.Drawing.Point(133, 111);
             this.cboLanguage.Name = "cboLanguage";
             this.cboLanguage.Size = new System.Drawing.Size(190, 21);
             this.cboLanguage.TabIndex = 4;
@@ -154,7 +111,7 @@ namespace IdleMaster
             // lblLanguage
             // 
             this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Location = new System.Drawing.Point(26, 98);
+            this.lblLanguage.Location = new System.Drawing.Point(24, 114);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(103, 13);
             this.lblLanguage.TabIndex = 3;
@@ -198,50 +155,13 @@ namespace IdleMaster
             // 
             this.grpPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpPriority.Controls.Add(this.radIdleMostValue);
-            this.grpPriority.Controls.Add(this.radIdleLeastDrops);
-            this.grpPriority.Controls.Add(this.radIdleMostDrops);
             this.grpPriority.Controls.Add(this.radIdleDefault);
-            this.grpPriority.Location = new System.Drawing.Point(13, 230);
+            this.grpPriority.Location = new System.Drawing.Point(13, 217);
             this.grpPriority.Name = "grpPriority";
-            this.grpPriority.Size = new System.Drawing.Size(392, 92);
+            this.grpPriority.Size = new System.Drawing.Size(392, 44);
             this.grpPriority.TabIndex = 1;
             this.grpPriority.TabStop = false;
             this.grpPriority.Text = "Idling Order";
-            // 
-            // radIdleMostValue
-            // 
-            this.radIdleMostValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radIdleMostValue.Location = new System.Drawing.Point(7, 35);
-            this.radIdleMostValue.Name = "radIdleMostValue";
-            this.radIdleMostValue.Size = new System.Drawing.Size(379, 17);
-            this.radIdleMostValue.TabIndex = 3;
-            this.radIdleMostValue.TabStop = true;
-            this.radIdleMostValue.Text = "Prioritize games with the highest card values";
-            this.radIdleMostValue.UseVisualStyleBackColor = true;
-            // 
-            // radIdleLeastDrops
-            // 
-            this.radIdleLeastDrops.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radIdleLeastDrops.Location = new System.Drawing.Point(7, 69);
-            this.radIdleLeastDrops.Name = "radIdleLeastDrops";
-            this.radIdleLeastDrops.Size = new System.Drawing.Size(379, 17);
-            this.radIdleLeastDrops.TabIndex = 2;
-            this.radIdleLeastDrops.Text = "Prioritize games with the lowest number of available drops";
-            this.radIdleLeastDrops.UseVisualStyleBackColor = true;
-            // 
-            // radIdleMostDrops
-            // 
-            this.radIdleMostDrops.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radIdleMostDrops.Location = new System.Drawing.Point(7, 52);
-            this.radIdleMostDrops.Name = "radIdleMostDrops";
-            this.radIdleMostDrops.Size = new System.Drawing.Size(379, 17);
-            this.radIdleMostDrops.TabIndex = 1;
-            this.radIdleMostDrops.Text = "Prioritize games with the highest number of available drops";
-            this.radIdleMostDrops.UseVisualStyleBackColor = true;
             // 
             // radIdleDefault
             // 
@@ -260,7 +180,7 @@ namespace IdleMaster
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(330, 333);
+            this.btnCancel.Location = new System.Drawing.Point(330, 273);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -271,7 +191,7 @@ namespace IdleMaster
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(249, 333);
+            this.btnOK.Location = new System.Drawing.Point(249, 273);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 3;
@@ -282,8 +202,7 @@ namespace IdleMaster
             // btnAdvanced
             // 
             this.btnAdvanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdvanced.Image = global::IdleMaster.Properties.Resources.imgLock;
-            this.btnAdvanced.Location = new System.Drawing.Point(12, 333);
+            this.btnAdvanced.Location = new System.Drawing.Point(12, 273);
             this.btnAdvanced.Name = "btnAdvanced";
             this.btnAdvanced.Size = new System.Drawing.Size(25, 23);
             this.btnAdvanced.TabIndex = 4;
@@ -295,52 +214,15 @@ namespace IdleMaster
             // 
             this.grpIdlingQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpIdlingQuantity.Controls.Add(this.radFastMode);
-            this.grpIdlingQuantity.Controls.Add(this.radOneThenMany);
-            this.grpIdlingQuantity.Controls.Add(this.radManyThenOne);
             this.grpIdlingQuantity.Controls.Add(this.radOneGameOnly);
-            this.grpIdlingQuantity.Location = new System.Drawing.Point(13, 142);
+            this.grpIdlingQuantity.Location = new System.Drawing.Point(13, 165);
             this.grpIdlingQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.grpIdlingQuantity.Name = "grpIdlingQuantity";
             this.grpIdlingQuantity.Padding = new System.Windows.Forms.Padding(2);
-            this.grpIdlingQuantity.Size = new System.Drawing.Size(392, 80);
+            this.grpIdlingQuantity.Size = new System.Drawing.Size(392, 44);
             this.grpIdlingQuantity.TabIndex = 5;
             this.grpIdlingQuantity.TabStop = false;
             this.grpIdlingQuantity.Text = "Idling Behavior";
-            // 
-            // radFastMode
-            // 
-            this.radFastMode.AutoSize = true;
-            this.radFastMode.Location = new System.Drawing.Point(305, 18);
-            this.radFastMode.Name = "radFastMode";
-            this.radFastMode.Size = new System.Drawing.Size(74, 17);
-            this.radFastMode.TabIndex = 7;
-            this.radFastMode.TabStop = true;
-            this.radFastMode.Text = "Fast mode";
-            this.radFastMode.UseVisualStyleBackColor = true;
-            // 
-            // radOneThenMany
-            // 
-            this.radOneThenMany.AutoSize = true;
-            this.radOneThenMany.Location = new System.Drawing.Point(7, 53);
-            this.radOneThenMany.Name = "radOneThenMany";
-            this.radOneThenMany.Size = new System.Drawing.Size(338, 17);
-            this.radOneThenMany.TabIndex = 6;
-            this.radOneThenMany.TabStop = true;
-            this.radOneThenMany.Text = "Idle games with more than 2 hours individually, then simultaneously";
-            this.radOneThenMany.UseVisualStyleBackColor = true;
-            // 
-            // radManyThenOne
-            // 
-            this.radManyThenOne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radManyThenOne.Location = new System.Drawing.Point(7, 35);
-            this.radManyThenOne.Name = "radManyThenOne";
-            this.radManyThenOne.Size = new System.Drawing.Size(379, 17);
-            this.radManyThenOne.TabIndex = 5;
-            this.radManyThenOne.TabStop = true;
-            this.radManyThenOne.Text = "Idle games simultaneously up to 2 hours, then individually";
-            this.radManyThenOne.UseVisualStyleBackColor = true;
             // 
             // radOneGameOnly
             // 
@@ -355,32 +237,42 @@ namespace IdleMaster
             this.radOneGameOnly.Text = "Idle each game individually";
             this.radOneGameOnly.UseVisualStyleBackColor = true;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(417, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(417, 368);
+            this.ClientSize = new System.Drawing.Size(417, 308);
             this.Controls.Add(this.grpIdlingQuantity);
             this.Controls.Add(this.btnAdvanced);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.grpPriority);
             this.Controls.Add(this.grpGeneral);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Idle Master Settings";
+            this.Text = "Idle Master EM Settings";
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.grpGeneral.ResumeLayout(false);
             this.grpGeneral.PerformLayout();
             this.grpPriority.ResumeLayout(false);
             this.grpIdlingQuantity.ResumeLayout(false);
-            this.grpIdlingQuantity.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -394,25 +286,19 @@ namespace IdleMaster
         private GroupBox grpGeneral;
         private CheckBox chkMinToTray;
         private GroupBox grpPriority;
-        private RadioButton radIdleLeastDrops;
-        private RadioButton radIdleMostDrops;
         private RadioButton radIdleDefault;
         private Button btnCancel;
         private Button btnOK;
-        private RadioButton radIdleMostValue;
         private Button btnAdvanced;
         private ToolTip ttHints;
         private CheckBox chkIgnoreClientStatus;
         private CheckBox chkShowUsername;
     private GroupBox grpIdlingQuantity;
-    private RadioButton radManyThenOne;
     private RadioButton radOneGameOnly;
     private ComboBox cboLanguage;
     private Label lblLanguage;
-    private RadioButton radOneThenMany;
         private CheckBox darkThemeCheckBox;
-        private CheckBox whiteIconsCheckBox;
-        private RadioButton radFastMode;
         private CheckBox noSleepBox;
+        private MenuStrip menuStrip1;
     }
 }

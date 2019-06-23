@@ -40,6 +40,16 @@ namespace IdleMaster
             return idleProcess;
         }
 
+        public Process Idle2()
+        {
+            int ets2 = 227300;
+            if (InIdle)
+                return idleProcess;
+
+            idleProcess = Process.Start(new ProcessStartInfo("steam-idle.exe", ets2.ToString()) { WindowStyle = ProcessWindowStyle.Hidden });
+            return idleProcess;
+        }
+
         public void StopIdle()
         {
             if (InIdle)

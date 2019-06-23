@@ -21,22 +21,7 @@ namespace IdleMaster
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-        if (radIdleDefault.Checked)
-        {
-            Settings.Default.sort = "default";
-        }
-        if (radIdleLeastDrops.Checked)
-        {
-            Settings.Default.sort = "leastcards";
-        }
-        if (radIdleMostDrops.Checked)
-        {
-            Settings.Default.sort = "mostcards";
-        }
-        if (radIdleMostValue.Checked)
-        {
-            Settings.Default.sort = "mostvalue";
-        }
+        Settings.Default.sort = "default";
 
         if (cboLanguage.Text != "")
         {
@@ -47,28 +32,6 @@ namespace IdleMaster
             Settings.Default.language = cboLanguage.Text;
         }
 
-        if (radOneThenMany.Checked)
-        {
-            Settings.Default.OnlyOneGameIdle = false;
-            Settings.Default.OneThenMany = true;
-            Settings.Default.fastMode = false; // Disable fast mode
-        }
-        else
-        {
-            Settings.Default.OnlyOneGameIdle = radOneGameOnly.Checked && !radManyThenOne.Checked;
-            Settings.Default.OneThenMany = false;
-
-            // JN: Enable/disable fast mode
-            if (radFastMode.Checked)
-            {
-                Settings.Default.OnlyOneGameIdle = false;
-                Settings.Default.fastMode = true;
-            }
-            else
-            {
-                Settings.Default.fastMode = false;
-            }
-        }        
         Settings.Default.minToTray = chkMinToTray.Checked;
         Settings.Default.ignoreclient = chkIgnoreClientStatus.Checked;
         Settings.Default.showUsername = chkShowUsername.Checked;
@@ -97,21 +60,6 @@ namespace IdleMaster
                     break;
             }
         }
-        
-        switch (Settings.Default.sort)
-        {
-            case "leastcards":
-                radIdleLeastDrops.Checked = true;
-                break;
-            case "mostcards":
-                radIdleMostDrops.Checked = true;
-                break;
-            case "mostvalue":
-                radIdleMostValue.Checked = true;
-                break;
-            default:
-                break;
-        }
 
         // Load translation
         this.Text = localization.strings.idle_master_settings;
@@ -129,33 +77,18 @@ namespace IdleMaster
         ttHints.SetToolTip(chkShowUsername, localization.strings.show_username);
         radOneGameOnly.Text = localization.strings.idle_individual;
         ttHints.SetToolTip(radOneGameOnly, localization.strings.idle_individual);
-        radManyThenOne.Text = localization.strings.idle_simultaneous;
-        ttHints.SetToolTip(radManyThenOne, localization.strings.idle_simultaneous);
-        radOneThenMany.Text = localization.strings.idle_onethenmany;
-        ttHints.SetToolTip(radOneThenMany, localization.strings.idle_onethenmany);
         radIdleDefault.Text = localization.strings.order_default;
         ttHints.SetToolTip(radIdleDefault, localization.strings.order_default);
-        radIdleMostValue.Text = localization.strings.order_value;
-        ttHints.SetToolTip(radIdleMostValue, localization.strings.order_value);
-        radIdleMostDrops.Text = localization.strings.order_most;
-        ttHints.SetToolTip(radIdleMostDrops, localization.strings.order_most);
-        radIdleLeastDrops.Text = localization.strings.order_least;
-        ttHints.SetToolTip(radIdleLeastDrops, localization.strings.order_least);
         lblLanguage.Text = localization.strings.interface_language;
-        
-        if (Settings.Default.fastMode)
-        {
-            radFastMode.Checked = true;
-        }
-        else if (Settings.Default.OneThenMany)
-        {
-            radOneThenMany.Checked = true;
-        }
-        else
-        {
-            radOneGameOnly.Checked = Settings.Default.OnlyOneGameIdle;
-            radManyThenOne.Checked = !Settings.Default.OnlyOneGameIdle;
-        }        
+        noSleepBox.Text = localization.strings.no_sleep;
+        darkThemeCheckBox.Text = localization.strings.dark_theme;
+
+        radOneGameOnly.Checked = Settings.Default.OnlyOneGameIdle;
+
+        if(Settings.Default.sort == "Default")
+            {
+                radIdleDefault.Checked = true;
+            }
 
         if (Settings.Default.minToTray)
         {
@@ -175,6 +108,7 @@ namespace IdleMaster
         {
             noSleepBox.Checked = true;
         }
+
         runtimeCustomThemeSettings(); // JN: Apply theme colors and icons
     }
 
@@ -183,11 +117,9 @@ namespace IdleMaster
     {
         // Read settings
         var customTheme = Settings.Default.customTheme;
-        var whiteIcons = Settings.Default.whiteIcons;
 
         // Set checkboxes (Not necessary, as the checkboxes are bound to the global setting)
-        //darkThemeCheckBox.Checked = customTheme;
-        //whiteIconsCheckBox.Checked = whiteIcons;
+        //darkThemeBox.Checked = customTheme;
         
         if (customTheme)
         {
@@ -223,19 +155,13 @@ namespace IdleMaster
         btnOK.BackColor = btnCancel.BackColor = btnAdvanced.BackColor = colorBgd;
         btnOK.ForeColor = btnCancel.ForeColor = btnAdvanced.ForeColor = colorTxt;
 
-        // Update the icon(s)
-        runtimeWhiteIconsSettings();
+        // Icons
+        btnAdvanced.Image = Settings.Default.whiteIcons ? Resources.imgLock_w : Resources.imgLock;
 
         // Apply to the main frame window
         //this.Parent.Refresh();
         // Save the settings
         Settings.Default.Save();
-    }
-
-    private void runtimeWhiteIconsSettings()
-    {
-        // Icon images
-        btnAdvanced.Image = Settings.Default.whiteIcons ? Resources.imgLock_w : Resources.imgLock;
     }
 
     private void btnAdvanced_Click(object sender, EventArgs e)
@@ -244,16 +170,10 @@ namespace IdleMaster
       frm.ShowDialog();
     }
 
-    private void darkThemeCheckBox_CheckedChanged(object sender, EventArgs e)
+    private void darkThemeBox_CheckedChanged(object sender, EventArgs e)
     {
         Settings.Default.customTheme = darkThemeCheckBox.Checked; // Save the dark theme setting
         runtimeCustomThemeSettings(); // JN: Apply the dark theme
-    }
-
-    private void whiteIconsCheckBox_CheckedChanged(object sender, EventArgs e)
-    {
-        Settings.Default.whiteIcons = whiteIconsCheckBox.Checked; // Save the white icons setting
-        runtimeWhiteIconsSettings(); // JN: Apply white icons
     }
     }
 }

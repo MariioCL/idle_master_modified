@@ -12,19 +12,18 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://ftp.steamidlemaster.com/idlemaster/install/</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Mario\Escritorio\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>1</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>http://www.steamidlemaster.com/install/</InstallUrl>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.4.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -70,16 +69,14 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.7\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Steamworks.NET, Version=7.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -115,12 +112,6 @@
     <Compile Include="frmBlacklist.Designer.cs">
       <DependentUpon>frmBlacklist.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmChangelog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmChangelog.Designer.cs">
-      <DependentUpon>frmChangelog.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,12 +136,7 @@
     <Compile Include="frmSettingsAdvanced.Designer.cs">
       <DependentUpon>frmSettingsAdvanced.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStatistics.Designer.cs">
-      <DependentUpon>frmStatistics.cs</DependentUpon>
-    </Compile>
+    <Compile Include="localization\strings.Designer.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,13 +145,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="localization\strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>strings.resx</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Statistics.cs" />
     <Compile Include="SteamProfile.cs" />
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
@@ -176,9 +156,6 @@
     <EmbeddedResource Include="frmBrowser.resx">
       <DependentUpon>frmBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmChangelog.resx">
-      <DependentUpon>frmChangelog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,40 +165,12 @@
     <EmbeddedResource Include="frmSettingsAdvanced.resx">
       <DependentUpon>frmSettingsAdvanced.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStatistics.resx">
-      <DependentUpon>frmStatistics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="localization\strings.cs.resx" />
-    <EmbeddedResource Include="localization\strings.de.resx" />
-    <EmbeddedResource Include="localization\strings.el.resx" />
-    <EmbeddedResource Include="localization\strings.es.resx" />
-    <EmbeddedResource Include="localization\strings.fi.resx" />
-    <EmbeddedResource Include="localization\strings.fr.resx" />
-    <EmbeddedResource Include="localization\strings.hu.resx" />
-    <EmbeddedResource Include="localization\strings.it.resx" />
-    <EmbeddedResource Include="localization\strings.ja.resx" />
-    <EmbeddedResource Include="localization\strings.ko.resx" />
-    <EmbeddedResource Include="localization\strings.nl.resx" />
-    <EmbeddedResource Include="localization\strings.no.resx" />
-    <EmbeddedResource Include="localization\strings.pl.resx" />
-    <EmbeddedResource Include="localization\strings.pt-BR.resx" />
-    <EmbeddedResource Include="localization\strings.pt.resx" />
-    <EmbeddedResource Include="localization\strings.ro.resx" />
-    <EmbeddedResource Include="localization\strings.ru.resx" />
-    <EmbeddedResource Include="localization\strings.sv.resx" />
-    <EmbeddedResource Include="localization\strings.th.resx" />
-    <EmbeddedResource Include="localization\strings.tr.resx" />
-    <EmbeddedResource Include="localization\strings.uk.resx" />
-    <EmbeddedResource Include="localization\strings.zh-TW.resx" />
-    <EmbeddedResource Include="localization\strings.zh.resx" />
+    <EmbeddedResource Include="localization\strings.en.resx" />
+    <EmbeddedResource Include="localization\strings.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="localization\strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="code signing.pfx" />
@@ -278,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo1.ico" />
+    <Content Include="Steamworks.NET.dll" />
     <None Include="Resources\select2-spinner_inverted.gif" />
     <None Include="Resources\green_lock_shadow.png" />
     <None Include="Resources\x-2x_w.png" />

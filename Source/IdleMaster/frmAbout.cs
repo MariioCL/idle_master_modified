@@ -28,18 +28,6 @@ namespace IdleMaster
       this.ForeColor = defSettings.customTheme ? defSettings.colorTxt : defSettings.colorTxtOriginal;
       FlatStyle buttonStyle = defSettings.customTheme ? FlatStyle.Flat : FlatStyle.Standard;
       btnOK.FlatStyle = buttonStyle; btnOK.BackColor = this.BackColor; btnOK.ForeColor = this.ForeColor; 
-      
-
-      if (ApplicationDeployment.IsNetworkDeployed)
-      {
-        var version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-        lblVersion.Text = "Idle Master v" + version;
-      }
-      else
-      {
-        var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        lblVersion.Text = "Idle Master v" + version;
-      }
     }
   }
 }

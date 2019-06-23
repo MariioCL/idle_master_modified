@@ -721,5 +721,40 @@ namespace IdleMaster.localization {
                 return ResourceManager.GetString("validating", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Back....
+        /// </summary>
+        internal static string back
+        {
+            get
+            {
+                return ResourceManager.GetString("back", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No Sleep...
+        /// </summary>
+        /// 
+        internal static string no_sleep
+        {
+            get
+            {
+                return ResourceManager.GetString("no_sleep", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Theme...
+        /// </summary>
+        /// 
+        internal static string dark_theme
+        {
+            get
+            {
+                return ResourceManager.GetString("dark_theme", resourceCulture);
+            }
+        }
     }
 }

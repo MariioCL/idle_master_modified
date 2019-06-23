@@ -37,8 +37,9 @@ namespace IdleMaster
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtAppid = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.grpAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,17 +90,6 @@ namespace IdleMaster
             this.label1.TabIndex = 0;
             this.label1.Text = "App ID:";
             // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(237, 383);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnRemove
             // 
             this.btnRemove.Image = global::IdleMaster.Properties.Resources.imgTrash;
@@ -110,12 +100,34 @@ namespace IdleMaster
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(235, 352);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(235, 379);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmBlacklist
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 418);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.grpAdd);
@@ -131,6 +143,7 @@ namespace IdleMaster
             this.grpAdd.ResumeLayout(false);
             this.grpAdd.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -138,9 +151,10 @@ namespace IdleMaster
         private ListBox lstBlacklist;
         private GroupBox grpAdd;
         private Button btnRemove;
-        private Button btnSave;
         private Button btnAdd;
         private TextBox txtAppid;
         private Label label1;
+        private Button btnSave;
+        private Button btnBack;
     }
 }
