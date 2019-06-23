@@ -9,11 +9,6 @@ Features
 -------
 Idle Master Extended comes with a few extensions and fixes:
 
-* **Fast mode** (File > Settings > Fast mode): Get your cards faster by automagically switching between simultaneous and individual idling (based on: https://steamcommunity.com/groups/idlemastery/discussions/0/1485487749771924917/)
-<p align="center">
-  <img src ="https://i.imgur.com/5DSvi3e.jpg"/>
-</p>
-
 * **Dark theme** (File > Settings > Dark theme): Applies color changes to several of the interface components to better match the Steam interface color scheme.
 <p align="center">
   <img src ="https://i.imgur.com/DM8wnbm.png"/>
@@ -22,8 +17,6 @@ Idle Master Extended comes with a few extensions and fixes:
 * **Updated Steamworks.NET** (https://steamworks.github.io): Includes the latest version of Steamworks.NET (v11.0.0) (available here: https://github.com/rlabrecque/Steamworks.NET/releases), which no longer requires CSteamworks.dll.
 
 * **Cookies and HTTPS**: All links within the application uses the HTTPS protocol and the cookie has been updated to include *steamLoginSecure*. The browser window used to login to Steam displays more information about the site being visited.
-
-* **Additional fixes**: For example, previously the "current badge" was skipped when changing from individual game idling to simultaneous idling - it should now work as intended. 
 
 *Note*: the "Remember me on this computer" checkbox is automatically checked when using the login browser window due to user feedback. According to the Steam website this allows for automatic logins for **30 days** - but it is only valid for Steam Guard enabled users.
 
