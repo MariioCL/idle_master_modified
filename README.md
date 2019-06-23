@@ -1,4 +1,4 @@
-Idle Master Extended [![Build status]
+Idle Master Extended
 ===========
  Get your Steam Trading Cards the Fast Way (Fast Mode Extension)
  ⭐️ Accepted by the official [Idle Master community](https://steamcommunity.com/groups/idlemastery/discussions/0/1485487749771924917/)
